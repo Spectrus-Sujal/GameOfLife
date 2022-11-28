@@ -13,6 +13,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+	ofBackground(255);
 	CM.drawCells();
 }
 

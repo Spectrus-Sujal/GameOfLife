@@ -25,15 +25,17 @@ class ofApp : public ofBaseApp{
 	{
 		cells.clear();
 
-		for(auto row {0}; row < 1; ++row)
+		std::cout << cells.size();
+		for(auto row {0}; row < 4; ++row)
 		{
-			for(auto col {0}; col < 1; ++col)
+			std::vector<Cell> tempVect;
+			for(auto col {0}; col < 6; ++col)
 			{
-				Point temp {0, 0, 10};
-				std::cout << "Hey";
-				cells[0].emplace_back(Cell::state::alive, temp);
-				std::cout << "TF?!?!?!";
+				Point temp {row * 4, col * 6, 10};
+
+				tempVect.emplace_back(Cell::state::alive, temp);
 			}
+			cells.emplace_back(tempVect);
 		}
 
 		CM = CellsManager{cells};
