@@ -3,11 +3,13 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	initialize();
+	ofSetFrameRate(1);
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-
+void ofApp::update()
+{
+	cells = CellsManager::updateCells(cells);
 }
 
 //--------------------------------------------------------------
@@ -29,7 +31,8 @@ void ofApp::initialize()
 		{
 			Point temp{ row * 10, col * 10, 10 };
 
-			tempVect.emplace_back(Cell::state::alive, temp);
+			if(ofRandom(10) < 2) 	tempVect.emplace_back(Cell::state::alive, temp);
+			else tempVect.emplace_back(Cell::state::dead, temp);
 		}
 		cells.emplace_back(tempVect);
 	}

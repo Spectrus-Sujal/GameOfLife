@@ -42,13 +42,13 @@ int CellsManager::checkConditions(const std::vector<std::vector<Cell>>& cells, i
 			if (cells[row - 1][col - 1].isAlive()) counter++;
 		}
 
-		if (col < cells[row].size())
+		if (col < cells[row].size() - 1)
 		{
 			if (cells[row - 1][col + 1].isAlive()) counter++;
 		}
 	}
 
-	if (row < cells.size())
+	if (row < cells.size() - 1)
 	{
 		if (cells[row + 1][col].isAlive()) counter++;
 
@@ -57,7 +57,7 @@ int CellsManager::checkConditions(const std::vector<std::vector<Cell>>& cells, i
 			if (cells[row + 1][col - 1].isAlive()) counter++;
 		}
 
-		if (col < cells[row].size())
+		if (col < cells[row].size() - 1)
 		{
 			if (cells[row + 1][col + 1].isAlive()) counter++;
 		}
@@ -68,7 +68,7 @@ int CellsManager::checkConditions(const std::vector<std::vector<Cell>>& cells, i
 		if (cells[row][col - 1].isAlive()) counter++;
 	}
 
-	if (col < cells[row].size())
+	if (col < cells[row].size() - 1)
 	{
 		if (cells[row][col + 1].isAlive()) counter++;
 	}
