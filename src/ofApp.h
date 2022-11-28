@@ -14,13 +14,16 @@ class ofApp : public ofBaseApp{
 
 		void keyPressed(int key);
 		void keyReleased(int key);
+		void mousePressed(int x, int y, int button);
 
 	int boardSize{100};
 
-	bool isPaused{ false };
+	bool isPaused{ true };
+	bool gameStarted{ false };
 
 	std::vector<std::vector<Cell>> cells {};
 		
 	void initialize();
+	void initializeRandom();
 	
 };
