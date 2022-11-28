@@ -18,26 +18,7 @@ class ofApp : public ofBaseApp{
 	Cell tempi {Cell::state::alive, {0, 0, 10}};
 
 	std::vector<std::vector<Cell>> cells {{tempi}};
-
-	CellsManager CM{cells};
 		
-	void initialize()
-	{
-		cells.clear();
-
-		std::cout << cells.size();
-		for(auto row {0}; row < 4; ++row)
-		{
-			std::vector<Cell> tempVect;
-			for(auto col {0}; col < 6; ++col)
-			{
-				Point temp {row * 4, col * 6, 10};
-
-				tempVect.emplace_back(Cell::state::alive, temp);
-			}
-			cells.emplace_back(tempVect);
-		}
-
-		CM = CellsManager{cells};
-	}
+	void initialize();
+	
 };

@@ -5,30 +5,20 @@
 /**
  * \brief A class used to contain and manage all the cells in the game
  */
-class CellsManager
+namespace CellsManager
 {
-private:
-	/**
-	 * \brief Vector containing all cells
-	 */
-	std::vector<std::vector<Cell>> cells;
-	
 
-public:
-	/**
-	 * \brief Constructor for CellsManager
-	 * \param c Vector of cells
-	 */
-	CellsManager(std::vector<std::vector<Cell>> &c);
+	int checkConditions(const std::vector<std::vector<Cell>>& cells, int row, int col);
+	
 
 	/**
 	 * \brief Update all cells in the game and check their neighbors
 	 */
-	void updateCells();
+	std::vector<std::vector<Cell>> updateCells(std::vector<std::vector<Cell>> &cells);
 
 	/**
 	 * \brief Draw all cells to canvas
 	 */
-	void drawCells() const;
+	void drawCells(std::vector<std::vector<Cell>>& cells);
 	
 };

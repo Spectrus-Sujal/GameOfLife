@@ -40,4 +40,6 @@ public:
 	 */
 	void drawCell() const;
 
+	bool isAlive() const;
+
 };

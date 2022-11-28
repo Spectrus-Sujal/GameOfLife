@@ -10,7 +10,7 @@ void Cell::updateState(int neighbours)
 	{
 		case 2:
 		case 3:
-		// Check if the Cell is coming alive
+			// Check if the Cell is coming alive
 			if(neighbours == 3 && current == Cell::state::dead)
 			{
 				current = Cell::state::alive;
@@ -18,10 +18,7 @@ void Cell::updateState(int neighbours)
 			break;
 		default:
 			// Make the cell Die
-			if(current == Cell::state::alive)
-			{
-				current = Cell::state::dead;
-			}
+			current = Cell::state::dead;
 			break;
 	}
 }
@@ -34,4 +31,8 @@ void Cell::drawCell() const
 	ofDrawRectangle(info.x, info.y, info.size, info.size);
 }
 
+bool Cell::isAlive() const
+{
+	return current == state::alive;
+}
 
