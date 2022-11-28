@@ -15,9 +15,9 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		void keyReleased(int key);
 
-	Cell tempi {Cell::state::alive, {0, 0, 10}};
+		int boardSize{100};
 
-	std::vector<std::vector<Cell>> cells {{tempi}};
+	std::vector<std::vector<Cell>> cells {};
 		
 	void initialize();
 	

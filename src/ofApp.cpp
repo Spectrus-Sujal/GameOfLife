@@ -22,14 +22,14 @@ void ofApp::draw()
 void ofApp::initialize()
 {
 	cells.clear();
-
-	std::cout << cells.size();
-	for (auto row{ 0 }; row < 10; ++row)
+	
+	for (auto row{ 0 }; row < boardSize; ++row)
 	{
 		std::vector<Cell> tempVect;
-		for (auto col{ 0 }; col < 10; ++col)
+		for (auto col{ 0 }; col < boardSize; ++col)
 		{
-			Point temp{ row * 10, col * 10, 10 };
+			int sizer{ (ofGetWidth() / boardSize) };
+			Point temp{ row * sizer, col * sizer, sizer };
 
 			if(ofRandom(10) < 2) 	tempVect.emplace_back(Cell::state::alive, temp);
 			else tempVect.emplace_back(Cell::state::dead, temp);
