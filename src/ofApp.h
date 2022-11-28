@@ -15,7 +15,9 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		void keyReleased(int key);
 
-		int boardSize{100};
+	int boardSize{100};
+
+	bool isPaused{ false };
 
 	std::vector<std::vector<Cell>> cells {};
 		

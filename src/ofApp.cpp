@@ -9,7 +9,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	cells = CellsManager::updateCells(cells);
+	if(!isPaused) cells = CellsManager::updateCells(cells);
 }
 
 //--------------------------------------------------------------
@@ -43,6 +43,10 @@ void ofApp::initialize()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
+	if(key == ' ')
+	{
+		isPaused = !isPaused;
+	}
 }
 
 //--------------------------------------------------------------
