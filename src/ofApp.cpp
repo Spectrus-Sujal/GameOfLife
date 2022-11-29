@@ -37,6 +37,7 @@ void ofApp::drawGame()
 	// Draw the new generation
 	CellsManager::drawCells(cells);
 
+	// SHow generation number
 	ofSetColor(0);
 	ofDrawBitmapString("Generation Number: " + std::to_string(generationNumber), 800, 100);
 }
@@ -62,7 +63,7 @@ void ofApp::initialize()
 		cells.emplace_back(tempVect);
 	}
 
-	generationNumber = 0;
+	generationNumber = 1;
 }
 
 
@@ -85,7 +86,7 @@ void ofApp::initializeRandom()
 		cells.emplace_back(tempVect);
 	}
 
-	generationNumber = 0;
+	generationNumber = 1;
 }
 
 //--------------------------------------------------------------
@@ -96,6 +97,11 @@ void ofApp::keyPressed(int key){
 	{
 		// Invert isPaused
 		isPaused = !isPaused;
+	}
+
+	if(isPaused && (key == 'n' || key == 'N'))
+	{
+		updateGame();
 	}
 }
 

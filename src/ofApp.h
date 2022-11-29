@@ -24,7 +24,7 @@ class ofApp : public ofBaseApp{
 	bool isPaused{ true };
 
 	// The current generation number
-	int generationNumber{ 0 };
+	int generationNumber{ 1 };
 
 	// 2D Vector if all cells in the game
 	std::vector<std::vector<Cell>> cells {};
