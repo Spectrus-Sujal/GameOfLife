@@ -2,14 +2,14 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	initialize();
-	ofSetFrameRate(1);
+	initializeRandom();
+	ofSetFrameRate(60);
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	if(!isPaused) cells = CellsManager::updateCells(cells);
+	if(ofGetFrameNum() % 60 == 0) if(!isPaused) cells = CellsManager::updateCells(cells);
 }
 
 //--------------------------------------------------------------

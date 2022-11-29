@@ -16,7 +16,7 @@ class ofApp : public ofBaseApp{
 		void keyReleased(int key);
 		void mousePressed(int x, int y, int button);
 
-	int boardSize{100};
+	int boardSize{80};
 
 	bool isPaused{ true };
 	bool gameStarted{ false };

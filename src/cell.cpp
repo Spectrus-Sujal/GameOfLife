@@ -26,8 +26,8 @@ void Cell::updateState(int neighbours)
 void Cell::drawCell() const
 {
 	// Change color based on current state
-	if(current == Cell::state::alive) ofSetColor(0);
-	else ofSetColor(255);
+	if(current == Cell::state::alive) ofSetColor(255);
+	else ofSetColor(0);
 	ofDrawRectangle(info.x, info.y, info.size, info.size);
 }
 
