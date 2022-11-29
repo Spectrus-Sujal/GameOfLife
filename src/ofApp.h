@@ -23,6 +23,9 @@ class ofApp : public ofBaseApp{
 	// Game is not updating
 	bool isPaused{ true };
 
+	// The current generation number
+	int generationNumber{ 0 };
+
 	// 2D Vector if all cells in the game
 	std::vector<std::vector<Cell>> cells {};
 
@@ -30,5 +33,10 @@ class ofApp : public ofBaseApp{
 	void initialize();
 	// Start the game with a random number of cells alive
 	void initializeRandom();
+
+	// Update components of the game
+	void updateGame();
+	//Draw components of game to canvas
+	void drawGame();
 	
 };

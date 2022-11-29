@@ -12,21 +12,33 @@ void ofApp::setup(){
 void ofApp::update()
 {
 	// Update twice every second
-	if (ofGetFrameNum() % 30 == 0 && !isPaused)
-	{
-		// Start the new generation
-		cells = CellsManager::updateCells(cells);
-	}
+	if (ofGetFrameNum() % 30 == 0 && !isPaused) updateGame();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
+{
+	drawGame();
+}
+
+void ofApp::updateGame()
+{
+	// Start the new generation
+	cells = CellsManager::updateCells(cells);
+	generationNumber++;
+}
+
+
+void ofApp::drawGame()
 {
 	// Erase the last generation
 	ofBackground(255);
 
 	// Draw the new generation
 	CellsManager::drawCells(cells);
+
+	ofSetColor(0);
+	ofDrawBitmapString("Generation Number: " + std::to_string(generationNumber), 800, 100);
 }
 
 void ofApp::initialize()
@@ -49,6 +61,8 @@ void ofApp::initialize()
 		// Add the temp vector to cells
 		cells.emplace_back(tempVect);
 	}
+
+	generationNumber = 0;
 }
 
 
@@ -70,6 +84,8 @@ void ofApp::initializeRandom()
 		}
 		cells.emplace_back(tempVect);
 	}
+
+	generationNumber = 0;
 }
 
 //--------------------------------------------------------------
@@ -90,8 +106,6 @@ void ofApp::keyReleased(int key){
 
 void ofApp::mousePressed(int x, int y, int button)
 {
-	
-
 	// Check if the game is paused
 	// if so then check where the mouse was pressed
 	for (auto row{ 0 }; isPaused && row < boardSize; ++row)
