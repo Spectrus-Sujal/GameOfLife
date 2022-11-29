@@ -3,15 +3,15 @@
 // Create the Cell Object
 Cell::Cell(state s, Point i) : current{ s }, info{i} {}
 
-void Cell::updateState(int neighbours)
+void Cell::updateState(int neighbors)
 {
-	// Change state based on neighbours
-	switch(neighbours)
+	// Change state based on neighbors
+	switch(neighbors)
 	{
 		case 2:
 		case 3:
 			// Check if the Cell is coming alive
-			if(neighbours == 3 && current == Cell::state::dead)
+			if(neighbors == 3 && current == Cell::state::dead)
 			{
 				current = Cell::state::alive;
 			}
@@ -33,6 +33,7 @@ void Cell::drawCell() const
 
 bool Cell::isAlive() const
 {
+	// Return whether the cell is alive or not
 	return current == state::alive;
 }
 

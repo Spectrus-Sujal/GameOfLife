@@ -40,6 +40,10 @@ public:
 	 */
 	void drawCell() const;
 
+	/**
+	 * \brief Know whether the cell is currently alive
+	 * \return If cell is alive
+	 */
 	bool isAlive() const;
 
 };
