@@ -3,10 +3,18 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+	// Setup the GUI
 	gui.setup();
+	// Add the Board Size
+	gui.add(boardSize.setup("Board Size", 40, 10, 80));
+	// Add the Empty board
 	gui.add(resetGameEmpty.setup("Restart Game (Empty)"));
+	// Add the Random board
 	gui.add(resetGameRandom.setup("Restart Game (Random)"));
-	gui.add(genSpeed.setup("Generation Speed", 2, 1, 5));
+	// Add the chances of a cell to be alive in random board
+	gui.add(chanceToBeAlive.setup("Alive Chances", 1, 0.1, 10));
+	// Speed the generations change
+	gui.add(genSpeed.setup("Generation Speed", 3, 1, 5));
 
 	// Create the game board
 	initializeRandom();
@@ -17,19 +25,25 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	// Update twice every second
+	// Update every second based on genSpeed
 	if (ofGetFrameNum() % (60 / genSpeed) == 0 && !isPaused) updateGame();
 
 	if (resetGameEmpty)
 	{
+		// Make and empty grid
+		size = ofGetHeight() / boardSize;
 		initialize();
 		isPaused = true;
 	}
 	if (resetGameRandom)
 	{
+		// Randomize the grid
+		size = ofGetHeight() / boardSize;
 		initializeRandom();
 		isPaused = true;
 	}
+
+	gui.setPosition(800, 0);
 }
 
 //--------------------------------------------------------------
@@ -50,14 +64,14 @@ void ofApp::updateGame()
 void ofApp::drawGame()
 {
 	// Erase the last generation
-	ofBackground(255);
+	ofBackground(50);
 
 	// Draw the new generation
 	CellsManager::drawCells(cells);
 
 	// SHow generation number
-	ofSetColor(0);
-	ofDrawBitmapString("Generation Number: " + std::to_string(generationNumber), 800, 100);
+	ofSetColor(255);
+	ofDrawBitmapString("Generation Number: " + std::to_string(generationNumber), 800, 200);
 }
 
 void ofApp::initialize()
@@ -81,6 +95,7 @@ void ofApp::initialize()
 		cells.emplace_back(tempVect);
 	}
 
+	// Reset the generation number
 	generationNumber = 1;
 }
 
@@ -96,8 +111,8 @@ void ofApp::initializeRandom()
 		{
 			const Point temp{ row * size, col * size, size };
 
-			// Check if the cell is alive or dead, 10% chance to be alive
-			if(ofRandom(10) < 1) 	
+			// Check if the cell is alive or dead, based on chance to be alive
+			if(ofRandom(10) < chanceToBeAlive) 	
 			{	 tempVect.emplace_back(Cell::state::alive, temp);		}
 			else tempVect.emplace_back(Cell::state::dead, temp);
 		}

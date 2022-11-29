@@ -18,13 +18,14 @@ class ofApp : public ofBaseApp{
 		void mousePressed(int x, int y, int button);
 
 		ofxPanel gui;
+		ofxSlider<int> boardSize;
 		ofxButton resetGameEmpty;
 		ofxButton resetGameRandom;
+		ofxSlider<double> chanceToBeAlive;
 		ofxSlider<int> genSpeed;
 
 	// Size of the game area
-	int boardSize{80};
-	const int size{ (ofGetHeight() / boardSize) };
+	int size{ (ofGetHeight() / boardSize) };
 
 	// Game is not updating
 	bool isPaused{ true };
