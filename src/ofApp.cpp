@@ -92,17 +92,12 @@ void ofApp::initializeRandom()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
-	// Check for space bar
-	if(key == ' ')
-	{
-		// Invert isPaused
-		isPaused = !isPaused;
-	}
+	// Check for space bar  // Invert isPaused 
+	if(key == ' ') isPaused = !isPaused;
 
-	if(isPaused && (key == 'n' || key == 'N'))
-	{
-		updateGame();
-	}
+
+	if(isPaused && (key == 'n' || key == 'N')) updateGame();
+	
 }
 
 //--------------------------------------------------------------
