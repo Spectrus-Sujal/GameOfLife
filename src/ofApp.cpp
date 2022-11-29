@@ -2,6 +2,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+
+	gui.setup();
+	gui.add(resetGameEmpty.setup("Restart Game (Empty)"));
+	gui.add(resetGameRandom.setup("Restart Game (Random)"));
+
 	// Create the game board
 	initializeRandom();
 	// Make the game 60fps
@@ -13,12 +18,24 @@ void ofApp::update()
 {
 	// Update twice every second
 	if (ofGetFrameNum() % 30 == 0 && !isPaused) updateGame();
+
+	if (resetGameEmpty)
+	{
+		initialize();
+		
+	}
+	if (resetGameRandom)
+	{
+		initializeRandom();
+		isPaused = true;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
 	drawGame();
+	gui.draw();
 }
 
 void ofApp::updateGame()

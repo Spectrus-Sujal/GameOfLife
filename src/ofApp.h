@@ -4,6 +4,7 @@
 #include "point.h"
 #include "cell.h"
 #include "cellsManager.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -15,6 +16,10 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mousePressed(int x, int y, int button);
+
+		ofxPanel gui;
+		ofxButton resetGameEmpty;
+		ofxButton resetGameRandom;
 
 	// Size of the game area
 	int boardSize{80};
