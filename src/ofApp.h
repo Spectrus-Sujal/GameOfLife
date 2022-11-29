@@ -16,14 +16,18 @@ class ofApp : public ofBaseApp{
 		void keyReleased(int key);
 		void mousePressed(int x, int y, int button);
 
+	// Size of the game area
 	int boardSize{80};
 
+	// Game is not updating
 	bool isPaused{ true };
-	bool gameStarted{ false };
 
+	// 2D Vector if all cells in the game
 	std::vector<std::vector<Cell>> cells {};
-		
+
+	// Start the game off with all cells as dead
 	void initialize();
+	// Start the game with a random number of cells alive
 	void initializeRandom();
 	
 };
