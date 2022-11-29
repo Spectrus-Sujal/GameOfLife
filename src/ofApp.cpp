@@ -6,6 +6,7 @@ void ofApp::setup(){
 	gui.setup();
 	gui.add(resetGameEmpty.setup("Restart Game (Empty)"));
 	gui.add(resetGameRandom.setup("Restart Game (Random)"));
+	gui.add(genSpeed.setup("Generation Speed", 2, 1, 5));
 
 	// Create the game board
 	initializeRandom();
@@ -17,12 +18,12 @@ void ofApp::setup(){
 void ofApp::update()
 {
 	// Update twice every second
-	if (ofGetFrameNum() % 30 == 0 && !isPaused) updateGame();
+	if (ofGetFrameNum() % (60 / genSpeed) == 0 && !isPaused) updateGame();
 
 	if (resetGameEmpty)
 	{
 		initialize();
-		
+		isPaused = true;
 	}
 	if (resetGameRandom)
 	{

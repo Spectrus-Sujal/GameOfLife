@@ -20,6 +20,7 @@ class ofApp : public ofBaseApp{
 		ofxPanel gui;
 		ofxButton resetGameEmpty;
 		ofxButton resetGameRandom;
+		ofxSlider<int> genSpeed;
 
 	// Size of the game area
 	int boardSize{80};
