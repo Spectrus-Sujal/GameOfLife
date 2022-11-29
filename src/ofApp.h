@@ -18,6 +18,7 @@ class ofApp : public ofBaseApp{
 
 	// Size of the game area
 	int boardSize{80};
+	const int size{ (ofGetHeight() / boardSize) };
 
 	// Game is not updating
 	bool isPaused{ true };

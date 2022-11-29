@@ -15,7 +15,7 @@ void ofApp::update()
 	if (ofGetFrameNum() % 30 == 0 && !isPaused)
 	{
 		// Start the new generation
-		CellsManager::updateCells(cells);
+		cells = CellsManager::updateCells(cells);
 	}
 }
 
@@ -41,9 +41,8 @@ void ofApp::initialize()
 		std::vector<Cell> tempVect;
 		for (auto col{ 0 }; col < boardSize; ++col)
 		{
-			// Assign the cells to the temp vector
-			const int sizer{ (ofGetHeight() / boardSize) };
-			const Point temp{ row * sizer, col * sizer, sizer };
+			// Assign the cells to the temp vectordd
+			const Point temp{ row * size, col * size, size };
 			
 			tempVect.emplace_back(Cell::state::dead, temp);
 		}
@@ -62,8 +61,7 @@ void ofApp::initializeRandom()
 		std::vector<Cell> tempVect;
 		for (auto col{ 0 }; col < boardSize; ++col)
 		{
-			const int sizer{ (ofGetWidth() / boardSize) };
-			const Point temp{ row * sizer, col * sizer, sizer };
+			const Point temp{ row * size, col * size, size };
 
 			// Check if the cell is alive or dead, 10% chance to be alive
 			if(ofRandom(10) < 1) 	
@@ -104,11 +102,10 @@ void ofApp::mousePressed(int x, int y, int button)
 		for (auto col{ 0 }; col < boardSize; ++col)
 		{
 			// Get the size and position of current cell
-			const int sizer{ (ofGetWidth() / boardSize) };
-			const Point temp{ row * sizer, col * sizer, sizer };
+			const Point temp{ row * size, col * size, size };
 
 			// Check if mouse is at current cell
-			if (x < (row * sizer) + sizer && y < (col * sizer) + sizer)
+			if (x < (row * size) + size && y < (col * size) + size)
 			{
 				// toggle cell state
 				if ( cells[row][col].isAlive())
