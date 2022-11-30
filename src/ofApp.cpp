@@ -17,7 +17,9 @@ void ofApp::setup(){
 	gui.add(genSpeed.setup("Generation Speed", 3, 1, 5));
 
 	// Create the game board
-	initializeRandom();
+	resetGameEmpty.addListener(this, &ofApp::initialize);
+	resetGameRandom.addListener(this, &ofApp::initializeRandom);
+	
 	// Make the game 60fps
 	ofSetFrameRate(60);
 }
@@ -27,21 +29,6 @@ void ofApp::update()
 {
 	// Update every second based on genSpeed
 	if (ofGetFrameNum() % (60 / genSpeed) == 0 && !isPaused) updateGame();
-
-	if (resetGameEmpty)
-	{
-		// Make and empty grid
-		size = ofGetHeight() / boardSize;
-		initialize();
-		isPaused = true;
-	}
-	if (resetGameRandom)
-	{
-		// Randomize the grid
-		size = ofGetHeight() / boardSize;
-		initializeRandom();
-		isPaused = true;
-	}
 
 	gui.setPosition(800, 0);
 }
@@ -72,12 +59,17 @@ void ofApp::drawGame()
 	// SHow generation number
 	ofSetColor(255);
 	ofDrawBitmapString("Generation Number: " + std::to_string(generationNumber), 800, 200);
+	ofDrawBitmapString("Black Pixels: Dead", 800, 250);
+	ofDrawBitmapString("White Pixels: Alive", 800, 270);
 }
 
 void ofApp::initialize()
 {
 	// Remove the last game board
 	cells.clear();
+
+	size = ofGetHeight() / boardSize;
+	isPaused = true;
 
 	// Go through every cell
 	for (auto row{ 0 }; row < boardSize; ++row)
@@ -103,6 +95,9 @@ void ofApp::initialize()
 void ofApp::initializeRandom()
 {
 	cells.clear();
+
+	size = ofGetHeight() / boardSize;
+	isPaused = true;
 	
 	for (auto row{ 0 }; row < boardSize; ++row)
 	{

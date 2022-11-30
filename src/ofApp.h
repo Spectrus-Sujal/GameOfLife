@@ -17,6 +17,12 @@ class ofApp : public ofBaseApp{
 		void keyReleased(int key);
 		void mousePressed(int x, int y, int button);
 
+		// Start the game off with all cells as dead
+		void initialize();
+		// Start the game with a random number of cells alive
+		void initializeRandom();
+		
+
 		ofxPanel gui;
 		ofxSlider<int> boardSize;
 		ofxButton resetGameEmpty;
@@ -36,10 +42,7 @@ class ofApp : public ofBaseApp{
 	// 2D Vector if all cells in the game
 	std::vector<std::vector<Cell>> cells {};
 
-	// Start the game off with all cells as dead
-	void initialize();
-	// Start the game with a random number of cells alive
-	void initializeRandom();
+	
 
 	// Update components of the game
 	void updateGame();
