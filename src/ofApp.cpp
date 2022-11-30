@@ -12,13 +12,19 @@ void ofApp::setup(){
 	// Add the Random board
 	gui.add(resetGameRandom.setup("Restart Game (Random)"));
 	// Add the chances of a cell to be alive in random board
-	gui.add(chanceToBeAlive.setup("Alive Chances", 1, 0.1, 10));
+	gui.add(chanceToBeAlive.setup("Alive Chances", 1, 10, 100));
 	// Speed the generations change
 	gui.add(genSpeed.setup("Generation Speed", 3, 1, 5));
+	// Pause the game
+	gui.add(isPaused.setup("Pause Game", true));
+	// Change the generation by +1
+	gui.add(nextGeneration.setup("Next Generation"));
 
 	// Create the game board
 	resetGameEmpty.addListener(this, &ofApp::initialize);
 	resetGameRandom.addListener(this, &ofApp::initializeRandom);
+	nextGeneration.addListener(this, &ofApp::updateGame);
+	
 	
 	// Make the game 60fps
 	ofSetFrameRate(60);
@@ -39,6 +45,7 @@ void ofApp::draw()
 	drawGame();
 	gui.draw();
 }
+
 
 void ofApp::updateGame()
 {
@@ -107,7 +114,7 @@ void ofApp::initializeRandom()
 			const Point temp{ row * size, col * size, size };
 
 			// Check if the cell is alive or dead, based on chance to be alive
-			if(ofRandom(10) < chanceToBeAlive) 	
+			if(ofRandom(10) < (chanceToBeAlive / 10.0)) 	
 			{	 tempVect.emplace_back(Cell::state::alive, temp);		}
 			else tempVect.emplace_back(Cell::state::dead, temp);
 		}
@@ -115,22 +122,6 @@ void ofApp::initializeRandom()
 	}
 
 	generationNumber = 1;
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
-	// Check for space bar  // Invert isPaused 
-	if(key == ' ') isPaused = !isPaused;
-
-
-	if(isPaused && (key == 'n' || key == 'N')) updateGame();
-	
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
 }
 
 void ofApp::mousePressed(int x, int y, int button)

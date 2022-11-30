@@ -12,16 +12,16 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-
-		void keyPressed(int key);
-		void keyReleased(int key);
+		
 		void mousePressed(int x, int y, int button);
 
 		// Start the game off with all cells as dead
 		void initialize();
 		// Start the game with a random number of cells alive
 		void initializeRandom();
-		
+
+		// Pause the game
+		void changeIsPaused();
 
 		ofxPanel gui;
 		ofxSlider<int> boardSize;
@@ -29,12 +29,11 @@ class ofApp : public ofBaseApp{
 		ofxButton resetGameRandom;
 		ofxSlider<double> chanceToBeAlive;
 		ofxSlider<int> genSpeed;
+		ofxToggle isPaused;
+		ofxButton nextGeneration;
 
 	// Size of the game area
 	int size{ (ofGetHeight() / boardSize) };
-
-	// Game is not updating
-	bool isPaused{ true };
 
 	// The current generation number
 	int generationNumber{ 1 };
