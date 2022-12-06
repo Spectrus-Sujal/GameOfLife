@@ -1,13 +1,13 @@
 # GameOfLife
 
 ## Description 
-This project is a recreation of Conway's Game of Life where Cells in a grid simulate through various stages of life based on the number of neighbouring cells
+This project is a recreation of Conway's Game of Life where Cells in a grid simulate through various stages of life based on the number of neighboring cells
 
 ### Rules
-1. Any living cell dies when it has less than 2 neighbours due to under population
-2. Any living cell with 2 or 3 neighbours survies to the next generation
-2. Any living cell dies when it has 4 or more neighbours due to over population
-3. Any dead cell comes to life if it has exactly 3 neighbours due to reproduction
+1. Any living cell dies when it has less than 2 neighbors due to under population
+2. Any living cell with 2 or 3 neighbors survies to the next generation
+2. Any living cell dies when it has 4 or more neighbors due to over population
+3. Any dead cell comes to life if it has exactly 3 neighbors due to reproduction
 
 
 ## Dependencies
