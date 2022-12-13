@@ -23,5 +23,5 @@ Steps to import this project to Visual Studio or VS Code
  <li> Open the .sln file
 </ol>
 
-## Licsenese
-This project is unlicsensed and is free to use for any who wish to do so
+## License
+This project is unlicensed and is free to use for any who wish to do so
